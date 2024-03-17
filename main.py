@@ -3,8 +3,11 @@ from sqlalchemy import create_engine, Column, Integer, String
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker, Session
 from pydantic import BaseModel
+import config
 
 app = FastAPI() 
+
+config.setConfig(app)
  
 # Database setup
 DATABASE_URL = "sqlite:///./sqlite.db"
