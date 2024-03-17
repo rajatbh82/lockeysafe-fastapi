@@ -13,5 +13,6 @@ sudo docker run -d \
   --mount type=bind,source="$(pwd)",target=/app \
   $project:latest
 # sudo docker container run -itd -p 8080:3030 --name $project $project
-sudo docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
+# Enter docker "sudo docker container exec -it lockeysafe-fastapi bash"
+# sudo docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
 sudo docker rmi -f $(sudo docker images --filter "dangling=true" -q)
