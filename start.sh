@@ -16,6 +16,9 @@ docker rmi -f $(docker images --filter "dangling=true" -q)
 # Enter docker " docker container exec -it lockeysafe-fastapi bash"
 #  docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
 
+# Create DB file:
+touch sqlite.db
+
 # Run inside docker container to run server
 # uvicorn main:app --host 0.0.0.0 --port 3030 --reload
 echo "-#-#-#->You are in the #container#, to run server run below command:"
