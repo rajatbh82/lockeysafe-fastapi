@@ -7,5 +7,8 @@ RUN apt-get install -y python3 python3-pip sqlite3
 RUN ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
 RUN apt-get -y install tzdata
 RUN pip3 install fastapi==0.110.0 uvicorn[standard]
+# RUN conda env create -f environment.yml
+# RUN conda env update -f environment.yml
+# RUN conda activate myenv
 WORKDIR /app
 EXPOSE 8000
