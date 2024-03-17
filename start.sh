@@ -15,7 +15,10 @@ docker rmi -f $(docker images --filter "dangling=true" -q)
 #  docker container run -itd -p 8080:3030 --name $project $project
 # Enter docker " docker container exec -it lockeysafe-fastapi bash"
 #  docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
-docker container exec -it $project bash
 
 # Run inside docker container to run server
 # uvicorn main:app --host 0.0.0.0 --port 3030 --reload
+echo "-#-#-#->You are in the #container#, to run server run below command:"
+echo "uvicorn main:app --host 0.0.0.0 --port 3030 --reload"
+
+docker container exec -it $project bash
