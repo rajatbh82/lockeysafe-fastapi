@@ -1,10 +1,9 @@
 #!/bin/bash          
 project="lockeysafe-fastapi"
-sudo docker login
-sudo docker container stop $project
-sudo docker build -t $project .
-sudo docker container rm -f $project
-sudo docker run -d \
+docker container stop $project
+docker build -t $project .
+docker container rm -f $project
+docker run -d \
   -it \
   -p 3030:3030 \
   --cpus="2.0" \
@@ -12,7 +11,11 @@ sudo docker run -d \
   --name $project \
   --mount type=bind,source="$(pwd)",target=/app \
   $project:latest
-# sudo docker container run -itd -p 8080:3030 --name $project $project
-# Enter docker "sudo docker container exec -it lockeysafe-fastapi bash"
-# sudo docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
-sudo docker rmi -f $(sudo docker images --filter "dangling=true" -q)
+docker rmi -f $(docker images --filter "dangling=true" -q)
+#  docker container run -itd -p 8080:3030 --name $project $project
+# Enter docker " docker container exec -it lockeysafe-fastapi bash"
+#  docker container exec -d $project uvicorn main:app --host 0.0.0.0 --port 3030 --reload &
+docker container exec -it $project bash
+
+# Run inside docker container to run server
+# uvicorn main:app --host 0.0.0.0 --port 3030 --reload
